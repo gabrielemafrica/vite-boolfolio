@@ -1,8 +1,12 @@
 <script>
 import axios from 'axios';
+import SingleProject from './SingeProject.vue';
 
 export default {
     name: 'Projects',
+    components: {
+      SingleProject
+    },
     data: function() {
         return {
           projects:[]
@@ -32,15 +36,15 @@ export default {
 </script>
 
 <template>
-  <div class="container text-center">
-  <h1>hello</h1>
+  <div class="container text-center my-5">
+  <h1>Progetti</h1>
 
-  <div class="container">
-    <ul>
-      <li v-for="project in projects" :key="project.id">
-        {{ project.nome }}
-      </li>
-    </ul>
+  <div class="container d-flex justify-content-center gap-2">
+    
+    <div v-for="project in projects" :key="project.id">
+      <SingleProject :projectObj="project" />
+    </div>
+  
   </div>
   </div>
 
