@@ -1,19 +1,31 @@
 <script>
-import Projects from './components/Projects.vue';
+import AppHeader from './components/AppHeader.vue';
+import AppFooter from './components/AppFooter.vue';
 
 export default {
   components: {
-    Projects
+    AppHeader,
+    AppFooter
   },
 }
 </script>
 
 <template>
-  <Projects />
+
+  <AppHeader />
+  <router-view></router-view>
+  <AppFooter id="footer"/>
+
 </template>
 
 <style lang="scss">
-
 @use './styles/general.scss' as *;
 
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0; 
+}
 </style>

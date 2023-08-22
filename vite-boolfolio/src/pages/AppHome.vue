@@ -3,7 +3,7 @@ import axios from 'axios';
 import SingleProject from './SingeProject.vue';
 
 export default {
-    name: 'Projects',
+    name: 'AppHome',
     components: {
       SingleProject
     },
@@ -16,15 +16,15 @@ export default {
   methods: {
     callProjects(urlApi){
       axios.get(urlApi)
-      .then(response=>{
-        const data = response.data;
-        console.log(data);
+          .then(response=>{
+            const data = response.data;
+            console.log(data);
 
-        this.projects = data.projects.data;
-        this.pages = data.projects.links;
-        })
-      .catch(error=>{
-        console.log(error);
+            this.projects = data.projects.data;
+            this.pages = data.projects.links;
+            })
+          .catch(error=>{
+            console.log(error);
       })
     },
     loadPage(url){
@@ -33,6 +33,15 @@ export default {
   },
   mounted() {
     this.callProjects('http://127.0.0.1:8000/api/v1/projects');
+    
+    //provo chiamata singolo progetto
+    axios.get('http://127.0.0.1:8000/api/v1/project/2')
+        .then(response =>{
+          const data = response.data;
+          console.log('provo la chiamata singola');
+          console.log(data);
+        })
+        .catch(error => {console.log(error);})
   }
 };
   
