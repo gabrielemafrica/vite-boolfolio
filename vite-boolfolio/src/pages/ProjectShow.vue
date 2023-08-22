@@ -8,7 +8,9 @@ export default {
     name: 'ProjectShow',
     data() {
         return {
-            projectObj: {}
+            projectObj: {},
+            projectType: {}
+
         }
     },
     mounted() {
@@ -19,8 +21,10 @@ export default {
             .then(result => {
               console.log(result.data.project);
               console.log(result);
+              console.log(result.data.project.type);
 
               this.projectObj = result.data.project;
+              this.projectType = result.data.project.type;
             })
             .catch(error => {console.log(error);})
     },
@@ -41,7 +45,8 @@ export default {
     <h5 class="card-title">{{ projectObj.nome }}</h5>
     <p class="card-text">{{ projectObj.descrizione }}</p>
     <a href="#" class="btn btn-primary">{{ projectObj.link }}</a>
-    <!-- <h5 class="card-title">{{ projectObj.type.type }}</h5> -->
+    <h5 class="card-title mt-2">TYPE:</h5>
+    <h5 class="card-title">{{ projectType.type }}</h5>
 
   </div>
   <div class="card-footer text-muted">
