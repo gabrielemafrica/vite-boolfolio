@@ -14,18 +14,11 @@ export default {
 
   <AppHeader />
   <router-view></router-view>
-  <AppFooter id="footer"/>
+  <AppFooter />
 
 </template>
 
 <style lang="scss">
 @use './styles/general.scss' as *;
 
-
-#footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0; 
-}
 </style>

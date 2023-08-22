@@ -17,9 +17,19 @@ export default {
     ID del progetto: {{ projectObj.id}}
   </div>
   <div class="card-body">
-    <h5 class="card-title">{{ projectObj.nome}}</h5>
-    <p class="card-text">{{ projectObj.descrizione}}</p>
-    <a href="#" class="btn btn-primary">{{ projectObj.link}}</a>
+
+    <router-link
+      class="btn btn-success mb-3"
+      :to="{ 
+          name: 'ProjectShow',
+          params: { id: projectObj.id }
+      }"
+    >
+      {{ projectObj.nome }}
+    </router-link>
+    <div class="container-img">
+      <img :src="'http://localhost:8000/storage/' + projectObj.main_picture" :alt="projectObj.nome">
+    </div>
   </div>
   <div class="card-footer text-muted">
     {{ projectObj.data}}
@@ -27,9 +37,27 @@ export default {
 </div>
 
 
+
+
 </template>
 
 <style  lang="scss">
 
 @use '../styles/general.scss' as *;
+
+.container-img{
+  // circle
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: gray;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
 </style>
